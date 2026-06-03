@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql://postgres:muzna2005@localhost:5432/emr_db"
+DATABASE_URL = "mysql+pymysql://root:muzna2005@localhost/healthcare_db"
 
 engine = create_engine(DATABASE_URL)
 

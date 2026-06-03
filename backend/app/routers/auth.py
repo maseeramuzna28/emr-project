@@ -12,7 +12,8 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     existing = db.query(User).filter(User.email == user.email).first()
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
-    new_user = User(email=user.email, password=hash_password(user.password))
+    name = user.email.split('@')[0].capitalize()
+    new_user = User(name=name, email=user.email, password=hash_password(user.password))
     db.add(new_user)
     db.commit()
     return {"message": "User created successfully"}
